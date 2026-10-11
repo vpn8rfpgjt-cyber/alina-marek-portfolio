@@ -127,3 +127,33 @@ footer{display:flex;justify-content:space-between;padding:25px 7vw;border-top:1p
     transparent 100%
   );
 }
+
+/* Zdjęcie bez ramki, płynnie połączone z tłem */
+
+.hero-photo-wrap,
+.photo-frame {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.photo-frame {
+  overflow: hidden !important;
+  -webkit-mask-image: radial-gradient(
+    ellipse 75% 80% at 50% 45%,
+    black 30%,
+    rgba(0,0,0,0.85) 50%,
+    transparent 100%
+  ) !important;
+  mask-image: radial-gradient(
+    ellipse 75% 80% at 50% 45%,
+    black 30%,
+    rgba(0,0,0,0.85) 50%,
+    transparent 100%
+  ) !important;
+}
+
+.photo-frame img {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
