@@ -52,26 +52,17 @@ a{color:inherit;text-decoration:none}
 .photo-frame::after {
   display: none;
 
+
 .photo-frame img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center top;
-
-  -webkit-mask-image: radial-gradient(
-    ellipse 70% 65% at 50% 48%,
-    black 40%,
-    rgba(0,0,0,0.7) 65%,
-    transparent 100%
-  );
-
-  mask-image: radial-gradient(
-    ellipse 70% 65% at 50% 48%,
-    black 40%,
-    rgba(0,0,0,0.7) 65%,
-    transparent 100%
-  );
+  object-fit: contain;
+  object-position: center bottom;
+  border: none;
+  filter: none;
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .photo-note{position:absolute;right:-36px;bottom:35px;padding:14px 18px;background:rgba(7,6,8,.88);border:1px solid rgba(239,101,189,.35);font-size:10px;line-height:1.7;letter-spacing:.16em}
