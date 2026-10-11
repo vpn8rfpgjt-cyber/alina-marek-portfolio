@@ -39,9 +39,43 @@ a{color:inherit;text-decoration:none}
 .button-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(239,101,189,.22)}
 .button-ghost:hover{border-color:var(--pink);color:var(--pink)}
 .hero-photo-wrap{justify-self:end;position:relative;width:min(430px,80%);z-index:2}
-.photo-frame{aspect-ratio:3/4;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.18);background:#1a1018;box-shadow:0 35px 100px rgba(0,0,0,.55)}
-.photo-frame:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(12,5,11,.42)),linear-gradient(90deg,rgba(239,101,189,.08),transparent 35%);mix-blend-mode:screen}
-.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:saturate(1.02) contrast(1.04)}
+
+.photo-frame {
+  aspect-ratio: 3 / 4;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.photo-frame::after {
+  display: none;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border: none;
+  filter: saturate(1.02) contrast(1.04);
+
+  -webkit-mask-image: radial-gradient(
+    ellipse 85% 85% at 50% 45%,
+    #000 35%,
+    rgba(0,0,0,0.85) 55%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 85% 85% at 50% 45%,
+    #000 35%,
+    rgba(0,0,0,0.85) 55%,
+    transparent 100%
+  );
+}
+
 .photo-note{position:absolute;right:-36px;bottom:35px;padding:14px 18px;background:rgba(7,6,8,.88);border:1px solid rgba(239,101,189,.35);font-size:10px;line-height:1.7;letter-spacing:.16em}
 .photo-note span{color:var(--pink)}
 .scroll-note{position:absolute;left:7vw;bottom:30px;font-size:10px;letter-spacing:.22em;color:#8e818b}.scroll-note span{color:var(--pink);font-size:18px;margin-left:7px}
@@ -102,109 +136,4 @@ footer{display:flex;justify-content:space-between;padding:25px 7vw;border-top:1p
   .hero-actions{flex-direction:column;align-items:flex-start}.hero-photo-wrap{width:86%}.photo-note{font-size:8px}
   .mini-facts{grid-template-columns:1fr}.mini-facts div{padding:16px 0;border-bottom:1px solid var(--line)}
   .project-visual{min-height:280px}.project-large .project-visual{min-height:360px}
-}
-
-/* Zdjęcie płynnie wtapiające się w tło */
-.photo-frame {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  overflow: visible !important;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  -webkit-mask-image: radial-gradient(
-    ellipse 72% 75% at center,
-    black 35%,
-    transparent 100%
-  );
-  mask-image: radial-gradient(
-    ellipse 72% 75% at center,
-    black 35%,
-    transparent 100%
-  );
-}
-
-/* Zdjęcie bez ramki, płynnie połączone z tłem */
-
-.hero-photo-wrap,
-.photo-frame {
-  border: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-.photo-frame {
-  overflow: hidden !important;
-  -webkit-mask-image: radial-gradient(
-    ellipse 75% 80% at 50% 45%,
-    black 30%,
-    rgba(0,0,0,0.85) 50%,
-    transparent 100%
-  ) !important;
-  mask-image: radial-gradient(
-    ellipse 75% 80% at 50% 45%,
-    black 30%,
-    rgba(0,0,0,0.85) 50%,
-    transparent 100%
-  ) !important;
-}
-
-.photo-frame img {
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
-}
-
-/* Usunięcie ramki i płynne zanikanie zdjęcia */
-
-.hero-photo-wrap,
-.photo-frame {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-}
-
-.photo-frame {
-  overflow: visible !important;
-}
-
-.photo-frame::before,
-.photo-frame::after {
-  display: none !important;
-}
-
-.photo-frame img {
-  display: block;
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 15%,
-    black 65%,
-    transparent 100%
-  ), linear-gradient(
-    to right,
-    transparent 0%,
-    black 22%,
-    black 78%,
-    transparent 100%
-  );
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 15%,
-    black 65%,
-    transparent 100%
-  ), linear-gradient(
-    to right,
-    transparent 0%,
-    black 22%,
-    black 78%,
-    transparent 100%
-  );
-  mask-composite: intersect;
 }
