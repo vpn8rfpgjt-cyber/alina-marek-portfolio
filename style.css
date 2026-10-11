@@ -51,8 +51,6 @@ a{color:inherit;text-decoration:none}
 
 .photo-frame::after {
   display: none;
-}
-
 
 .photo-frame img {
   display: block;
@@ -61,23 +59,19 @@ a{color:inherit;text-decoration:none}
   object-fit: cover;
   object-position: center top;
 
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 25%,
-    black 65%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 25%,
-    black 65%,
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 65% at 50% 48%,
+    black 40%,
+    rgba(0,0,0,0.7) 65%,
     transparent 100%
   );
 
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
+  mask-image: radial-gradient(
+    ellipse 70% 65% at 50% 48%,
+    black 40%,
+    rgba(0,0,0,0.7) 65%,
+    transparent 100%
+  );
 }
 
 .photo-note{position:absolute;right:-36px;bottom:35px;padding:14px 18px;background:rgba(7,6,8,.88);border:1px solid rgba(239,101,189,.35);font-size:10px;line-height:1.7;letter-spacing:.16em}
